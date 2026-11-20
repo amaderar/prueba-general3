@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pensamiento Matemático — Modo Práctica — EXANI-II</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--azul:#0033cc;--azul-dark:#002299;--azul-light:#e8eeff;--naranja:#ff4500;--bg:#f0f4ff;--card:#fff;--txt:#1a1a2e;--sub:#5a6080}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh}
+.hero{background:linear-gradient(135deg,var(--azul),var(--azul-dark));color:#fff;padding:16px}
+.hero-inner{max-width:900px;margin:0 auto;display:flex;gap:12px;align-items:center}
+.hero-title{font-size:1.15rem;font-weight:800}
+.hero-title span{color:#ffd080}
+.hero-sub{font-size:.8rem;opacity:.9}
+.wrap{max-width:900px;margin:0 auto;padding:16px 14px 40px}
+.card{background:var(--card);border-radius:14px;padding:20px;box-shadow:0 6px 24px rgba(0,51,204,.13);margin-bottom:16px}
+.card h2{text-align:center;color:var(--azul);margin-bottom:10px}
+.card p{font-size:.88rem;line-height:1.6;color:var(--sub);text-align:center}
+.btn{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--azul),var(--azul-dark));color:#fff;font-size:.95rem;font-weight:800;cursor:pointer;margin-top:12px}
+.btn:disabled{opacity:.6;cursor:default}
+.btn-sec{width:100%;padding:11px;border-radius:12px;background:#fff;color:var(--azul);border:2px solid var(--azul);font-weight:800;cursor:pointer;margin-top:10px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px;flex-wrap:wrap}
+.timer-box{background:var(--azul);color:#fff;padding:7px 14px;border-radius:20px;font-weight:800;font-size:.85rem}
+.timer-box.warn{background:#ff8c00}.timer-box.danger{background:#cc3300}
+.progress-track{height:10px;background:#e8eeff;border-radius:20px;overflow:hidden;margin-bottom:14px}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--azul),#00aaff)}
+.nav-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-bottom:16px}
+.nav-btn{padding:8px 0;border:2px solid #d0d8f0;background:#fff;border-radius:8px;cursor:pointer;font-weight:700}
+.nav-btn.answered{background:#e8eeff;border-color:var(--azul);color:var(--azul)}
+.nav-btn.current{background:var(--azul);color:#fff;border-color:var(--azul)}
+.q-num{font-size:.72rem;color:var(--sub);font-weight:700;letter-spacing:.3px;margin-bottom:6px}
+.q-text{font-size:1rem;line-height:1.7;margin-bottom:14px;font-weight:500}
+.options{display:flex;flex-direction:column;gap:9px}
+.opt-btn{border:2px solid #d0d8f0;border-radius:10px;background:#fff;padding:11px 14px;text-align:left;cursor:pointer;font-size:.93rem;line-height:1.5;display:flex;gap:10px;align-items:flex-start;width:100%}
+.opt-btn:hover{border-color:var(--azul);background:var(--azul-light)}
+.opt-letter{min-width:28px;height:28px;border-radius:50%;background:#e8eeff;font-weight:800;font-size:.82rem;display:flex;align-items:center;justify-content:center;color:var(--azul);flex-shrink:0}
+.opt-btn.selected{border-color:#0033cc;background:#e8eeff}
+.opt-btn.selected .opt-letter{background:#0033cc;color:#fff}
+.exam-footer{display:flex;gap:9px;margin-top:16px}
+.btn-nav{flex:1;padding:11px 6px;border-radius:10px;border:2px solid #d0d8f0;background:#fff;font-weight:700;cursor:pointer}
+.btn-nav:disabled{opacity:.35;cursor:default}
+.btn-entregar{padding:11px 18px;border-radius:10px;border:none;font-weight:800;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--naranja),#ff8c00)}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:center;justify-content:center;z-index:99}
+.modal-bg.open{display:flex}
+.modal{background:#fff;border-radius:14px;padding:22px;max-width:420px;width:90%}
+.modal h3{margin-bottom:10px;color:var(--azul)}
+.modal p{font-size:.88rem;line-height:1.6}
+.modal-btns{display:flex;gap:10px;margin-top:16px;justify-content:flex-end}
+.btn-cancel{padding:10px 16px;border-radius:10px;border:2px solid #d0d8f0;background:#fff;font-weight:700;cursor:pointer}
+.btn-confirm{padding:10px 16px;border-radius:10px;border:none;background:var(--azul);color:#fff;font-weight:800;cursor:pointer}
+.aviso{font-size:.82rem;background:#fff8f0;border-left:4px solid var(--naranja);padding:10px 12px;border-radius:0 10px 10px 0;line-height:1.6;margin-top:12px;text-align:left}
+.badge-practica{display:inline-block;background:#e8ffe8;color:#155724;border:1px solid #a3d9a3;padding:4px 10px;border-radius:20px;font-size:.72rem;font-weight:800;margin-top:8px}
+@media(max-width:600px){.nav-grid{grid-template-columns:repeat(6,1fr)}}
+</style>
+</head>
+<body>
+<div class="hero"><div class="hero-inner"><div><div class="hero-title">Asesorías Académicas <span>Izamal</span></div><div class="hero-sub">EXANI-II Simplificado • 1 de 3 • Pensamiento Matemático • Modo Práctica</div></div></div></div>
+
+<div class="wrap">
+
+<div class="card" id="screen-home">
+  <h2>🔢 Pensamiento Matemático</h2>
+  <p>Modo Práctica: cada vez que entras, se genera una versión nueva.<br><strong>En esta versión NO verás explicaciones ni si tu respuesta es correcta</strong> hasta llegar a Resultados.<br>Puedes cambiar tu respuesta mientras estés en el módulo.</p>
+  <div style="text-align:center"><span class="badge-practica">🔄 VERSIÓN NUEVA EN CADA INTENTO • SEPARADOR |</span></div>
+  <div class="aviso">⏱️ Tendrás <strong>45 minutos</strong>. Son <strong>30 preguntas</strong> tomadas al azar de tu banco en Google Drive. Si se acaba el tiempo, se guardará lo que lleves y pasarás al siguiente módulo.</div>
+  <button class="btn" id="btn-empezar" onclick="cargarBanco()">▶ Generar mi versión y empezar</button>
+  <p id="msg-carga" style="font-size:.82rem;text-align:center;margin-top:8px;color:var(--sub)"></p>
+  <button class="btn-sec" onclick="location.href='index.html'">← Volver al portal</button>
+</div>
+
+<div class="card" id="screen-exam" style="display:none">
+  <div class="topbar"><span style="font-size:.85rem;font-weight:800;color:var(--azul)" id="contador-top">Pregunta 1 / 30</span><span class="timer-box" id="timer-box">42:00</span></div>
+  <div class="progress-track"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+  <div class="nav-grid" id="nav-grid"></div>
+  <div class="q-num" id="q-num">Pregunta 1</div>
+  <div class="q-text" id="q-text"></div>
+  <div class="options" id="options"></div>
+  <div class="explanation" id="explanation" style="display:none"></div>
+  <div class="exam-footer">
+    <button class="btn-nav" id="btn-prev" onclick="goTo(STATE.qIdx-1)">← Anterior</button>
+    <button class="btn-nav" id="btn-next-nav" onclick="goTo(STATE.qIdx+1)">Siguiente →</button>
+    <button class="btn-entregar" id="btn-entregar" style="display:none" onclick="pedirConfirmar()">Siguiente módulo →</button>
+  </div>
+</div>
+
+<div class="card" id="screen-timeout" style="display:none">
+  <h2 style="color:var(--naranja)">⏰ Tiempo agotado</h2>
+  <p>Se agotó el tiempo disponible.</p>
+  <button class="btn" onclick="finishAndShow()">Siguiente módulo →</button>
+</div>
+
+</div>
+
+<div class="modal-bg" id="modal-bg">
+  <div class="modal"><h3>¿Terminar Pensamiento Matemático?</h3><p id="modal-msg"></p>
+    <div class="modal-btns"><button class="btn-cancel" onclick="cerrarModal()">Cancelar</button><button class="btn-confirm" onclick="confirmarEntrega()">Siguiente módulo →</button></div>
+  </div>
+</div>
+
+<script>
+// 👇 PEGUE AQUÍ LA URL DE SU APPS SCRIPT (la misma que usa para resultados)
+const API_URL = 'https://script.google.com/macros/s/AKfycbyAI3A5OPqZ8qNdC8Ds165SZUPTUGTVJATMuZ0Gcm1y8-fjx07Qx_P9-GMl7l1WsrM/exec';
+
+// 👇 SEPARADOR DE SU CSV. Usted usa | para que las comas no confundan los campos.
+const CSV_SEP = '|';
+const NUM_PREGUNTAS = 30;
+const TIEMPO_MIN = 45;
+
+const BANCO_FALLBACK = [
+  {q:'Dos ángulos son suplementarios. Uno mide $125°$. ¿Cuánto mide el otro?', opts:['$55°$','$65°$','$35°$'], answer:'$55°$', exp:'180-125=55.'},
+  {q:'Un celular cuesta $4800$ y tiene 25% de descuento. ¿Cuánto se paga?', opts:['$3600$','$3800$','$3400$'], answer:'$3600$', exp:'4800 x 0.75.'},
+  {q:'Si $3$ kg de naranja cuestan $54$, ¿cuánto cuestan $7$ kg?', opts:['$126$','$118$','$132$'], answer:'$126$', exp:'1 kg = 18.'},
+  {q:'¿Cuál es el resultado de $\\frac{3}{4} + \\frac{1}{2}$?', opts:['$\\frac{5}{4}$','$\\frac{4}{6}$','$1$'], answer:'$\\frac{5}{4}$', exp:'3/4+2/4.'},
+  {q:'Resuelve: $2x + 5 = 17$', opts:['$x=6$','$x=5$','$x=7$'], answer:'$x=6$', exp:'2x=12.'},
+  {q:'Factoriza: $x^2-9$', opts:['$(x-3)(x+3)$','$(x-9)(x+1)$','$(x+3)^2$'], answer:'$(x-3)(x+3)$', exp:'Diferencia de cuadrados.'},
+  {q:'Un rectángulo mide $8$ cm de largo y $5$ cm de ancho. ¿Cuál es su área?', opts:['$40$ cm²','$26$ cm²','$13$ cm²'], answer:'$40$ cm²', exp:'8x5.'},
+  {q:'Un triángulo tiene base $12$ cm y altura $5$ cm. ¿Cuál es su área?', opts:['$30$ cm²','$60$ cm²','$17$ cm²'], answer:'$30$ cm²', exp:'(12x5)/2.'},
+  {q:'Los datos son: $4, 7, 7, 9, 3, 7, 5$. ¿Cuál es la moda?', opts:['$7$','$4$','$5$'], answer:'$7$', exp:'Se repite 3 veces.'},
+  {q:'Al lanzar una moneda, ¿cuál es la probabilidad de que salga águila?', opts:['$1/2$','$1/4$','$1$'], answer:'$1/2$', exp:'1 de 2.'},
+  {q:'Si un auto recorre $180$ km en $3$ horas, ¿cuánto recorre en $5$ horas a la misma velocidad?', opts:['$300$ km','$280$ km','$320$ km'], answer:'$300$ km', exp:'60 km/h.'},
+  {q:'¿Cuál es el $20\\%$ de $250$?', opts:['$50$','$40$','$60$'], answer:'$50$', exp:'250 x 0.20.'},
+  {q:'En un triángulo rectángulo, los catetos miden $3$ y $4$. ¿Cuánto mide la hipotenusa?', opts:['$5$','$6$','$7$'], answer:'$5$', exp:'3-4-5.'},
+  {q:'La media de $6, 8, 10$ es:', opts:['$8$','$9$','$7$'], answer:'$8$', exp:'(6+8+10)/3.'},
+  {q:'¿Cuál es la pendiente de la recta $y=3x-2$?', opts:['$3$','$2$','$-2$'], answer:'$3$', exp:'y=mx+b.'}
+];
+
+let BANCO = [];
+const STATE = {qIdx:0, answers:{}, timerSec:0, timerID:null};
+const $ = id => document.getElementById(id);
+const show = id => $(id).style.display = 'block';
+const hide = id => $(id).style.display = 'none';
+function fmtT(s){ return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0'); }
+function calcCNE(c,t){ if(!t) return 1000; const z = ((c/t)*100 - 50) / 16.67; return Math.min(1300, Math.max(700, Math.round(1000 + 100*z))); }
+function mezclar(arr){
+  const a = [...arr];
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+
+// --- PARSER CSV CON SEPARADOR | ---
+// Respeta comillas: si un campo tiene | dentro, debe ir entre " "
+// Ejemplo: "Si x|y, ¿cuánto vale?"|A|B|C|a|exp
+function parseCSV_Pipe(texto){
+  const filas = [];
+  let fila = [], campo = '', enComillas = false;
+  for(let i=0;i<texto.length;i++){
+    const c = texto[i];
+    if(c === '"'){
+      if(enComillas && texto[i+1] === '"'){ campo += '"'; i++; }
+      else enComillas = !enComillas;
+    } else if(c === CSV_SEP && !enComillas){
+      fila.push(campo.trim()); campo = '';
+    } else if((c === '\n' || c === '\r') && !enComillas){
+      if(campo !== '' || fila.length){ fila.push(campo.trim()); filas.push(fila); fila = []; campo = ''; }
+      if(c === '\r' && texto[i+1] === '\n') i++;
+    } else {
+      campo += c;
+    }
+  }
+  if(campo !== '' || fila.length){ fila.push(campo.trim()); filas.push(fila); }
+  // Quita encabezado y filas vacías
+  // NUEVO FORMATO: 7 campos -> area|tema|pregunta|opciona|opcionb|opcioncorrecta|explicacion
+  return filas.filter((f, idx) => idx > 0 && f.length >= 7 && f[2]);
+}
+
+// ===== SOLO ESTA FUNCIÓN CAMBIÓ =====
+// Convierte filas [[area, tema, pregunta, opciona, opcionb, opcioncorrecta, explicacion], ...] a banco
+// Antes: f[0]=pregunta, f[4]=letra correcta
+// Ahora: f[2]=pregunta, f[5]=TEXTO de la correcta, f[6]=explicacion
+function filasABanco(filas){
+  return filas.map(f => {
+    const area = String(f[0]||'').trim();
+    const tema = String(f[1]||'').trim();
+    const pregunta = String(f[2]||'').trim();
+    const opcionA = String(f[3]||'').trim();
+    const opcionB = String(f[4]||'').trim();
+    const textoCorrecto = String(f[5]||'').trim(); // campo 6 = texto correcto
+    const explicacion = String(f[6]||'').trim();   // campo 7 = explicacion
+    return {
+      area: area,
+      tema: tema,
+      q: pregunta,
+      opts: [opcionA, opcionB, textoCorrecto],
+      answer: textoCorrecto,
+      exp: explicacion
+    };
+  }).filter(r => r.q && r.opts[0] && r.opts[1] && r.opts[2]);
+}
+// ===== FIN DEL ÚNICO CAMBIO =====
+
+// --- CARGA DESDE DRIVE VIA APPS SCRIPT (Apps Script ya parte con |) ---
+async function cargarBanco(){
+  const btn = $('btn-empezar');
+  const msg = $('msg-carga');
+  btn.disabled = true;
+  btn.textContent = 'Generando tu versión...';
+  msg.textContent = 'Leyendo tu banco de Drive (separador |)...';
+
+  let bancoCrudo = null;
+
+  if(API_URL && !API_URL.includes('SU_ID_AQUI')){
+    try{
+      const resp = await fetch(API_URL + '?sheet=PM');
+      const contenido = await resp.text();
+      try{
+        const filas = JSON.parse(contenido);
+        if(Array.isArray(filas) && filas.length >= 5) bancoCrudo = filasABanco(filas);
+      }catch(eJson){
+        const filas = parseCSV_Pipe(contenido);
+        if(filas.length >= 5) bancoCrudo = filasABanco(filas);
+      }
+    }catch(e){ console.log('Fallo Drive, uso respaldo', e); }
+  } else {
+    console.log('API_URL no configurada, uso respaldo');
+  }
+
+  if(!bancoCrudo || bancoCrudo.length < 5){
+    bancoCrudo = BANCO_FALLBACK;
+    msg.textContent = '⚠️ No se pudo leer Drive, se usó el banco de respaldo. Revisa tu Apps Script y que tu CSV use |.';
+  } else {
+    msg.textContent = '✅ Se leyeron ' + bancoCrudo.length + ' preguntas de Drive. Tomando ' + Math.min(NUM_PREGUNTAS, bancoCrudo.length) + ' al azar...';
+  }
+
+  // 3. Toma 30 al azar y revuelve SOLO las opciones, nunca la pregunta
+  BANCO = mezclar(bancoCrudo).slice(0, NUM_PREGUNTAS).map(r => {
+    const textoCorrecto = r.answer;
+    let opts = [...r.opts];
+    opts = mezclar(opts);
+    return { q: r.q, area: r.area, tema: r.tema, _opts: opts.map((t,i) => ({l:['a','b','c'][i], t})), _answerKey: ['a','b','c'][opts.indexOf(textoCorrecto)], exp: r.exp };
+  });
+
+  setTimeout(() => { hide('screen-home'); iniciarExamenConBanco(); }, 600);
+}
+
+function iniciarExamenConBanco(){
+  STATE.qIdx = 0; STATE.answers = {};
+  buildNavGrid(); show('screen-exam'); startTimer(); renderQ();
+}
+function startTimer(){
+  STATE.timerSec = TIEMPO_MIN * 60; renderTimer();
+  STATE.timerID = setInterval(() => { STATE.timerSec--; renderTimer(); if(STATE.timerSec <= 0){ clearInterval(STATE.timerID); timeOut(); } }, 1000);
+}
+function renderTimer(){
+  const tb = $('timer-box'); tb.textContent = fmtT(STATE.timerSec);
+  tb.className = 'timer-box' + (STATE.timerSec <= 60 ? ' danger' : STATE.timerSec <= 180 ? ' warn' : '');
+}
+function timeOut(){ hide('screen-exam'); show('screen-timeout'); }
+function finishAndShow(){ hide('screen-timeout'); showResults(); }
+function buildNavGrid(){
+  const grid = $('nav-grid'); grid.innerHTML = '';
+  BANCO.forEach((_,i) => {
+    const btn = document.createElement('button');
+    btn.className = 'nav-btn'; btn.id = 'nb-' + i; btn.textContent = i+1;
+    btn.onclick = (() => { const idx = i; return () => goTo(idx); })();
+    grid.appendChild(btn);
+  });
+  updateNav();
+}
+function updateNav(){
+  BANCO.forEach((r,i) => {
+    const btn = $('nb-' + i); if(!btn) return;
+    let cls = 'nav-btn';
+    if(STATE.answers.hasOwnProperty(i)) cls += ' answered';
+    if(i === STATE.qIdx) cls += ' current';
+    btn.className = cls;
+  });
+  const pb = $('progress-bar'); if(pb) pb.style.width = (Object.keys(STATE.answers).length / BANCO.length * 100) + '%';
+  const ct = $('contador-top'); if(ct) ct.textContent = 'Pregunta ' + (STATE.qIdx+1) + ' / ' + BANCO.length;
+}
+function goTo(idx){ if(idx < 0 || idx >= BANCO.length) return; STATE.qIdx = idx; renderQ(); }
+function renderQ(){
+  const r = BANCO[STATE.qIdx], n = BANCO.length, i = STATE.qIdx;
+  $('q-num').textContent = 'Pregunta ' + (i+1) + ' de ' + n;
+  $('q-text').textContent = r.q;
+  $('btn-prev').disabled = i === 0;
+  $('btn-next-nav').disabled = i === n-1;
+  $('btn-entregar').style.display = i === n-1 ? 'block' : 'none';
+  const con = $('options'); con.innerHTML = '';
+  const saved = STATE.answers.hasOwnProperty(i) ? STATE.answers[i] : null;
+  r._opts.forEach(o => {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn'; btn.dataset.key = o.l;
+    btn.innerHTML = '<span class="opt-letter">' + o.l.toUpperCase() + '</span><span>' + o.t + '</span>';
+    if(o.l === saved) btn.classList.add('selected');
+    btn.onclick = () => selectOpt(o.l, btn);
+    con.appendChild(btn);
+  });
+  const ex = $('explanation'); ex.className = 'explanation'; ex.innerHTML = '';
+  updateNav();
+}
+function selectOpt(key, clickedBtn){
+  STATE.answers[STATE.qIdx] = key;
+  document.querySelectorAll('.opt-btn').forEach(b => {
+    b.classList.remove('selected');
+    if(b.dataset.key === key) b.classList.add('selected');
+  });
+  updateNav();
+}
+function pedirConfirmar(){
+  const p = BANCO.length - Object.keys(STATE.answers).length;
+  $('modal-msg').innerHTML = p > 0 ? 'Tienes <strong>' + p + '</strong> pregunta(s) sin responder. ¿Pasar al siguiente módulo de todas formas?' : 'Has respondido todas las preguntas. ¿Pasar al siguiente módulo?';
+  $('modal-bg').classList.add('open');
+}
+function cerrarModal(){ $('modal-bg').classList.remove('open'); }
+function confirmarEntrega(){ cerrarModal(); clearInterval(STATE.timerID); hide('screen-exam'); showResults(); }
+function showResults(){
+  let c = 0, w = 0, sk = 0;
+  BANCO.forEach((r,i) => {
+    if(!STATE.answers.hasOwnProperty(i)) sk++;
+    else if(STATE.answers[i] === r._answerKey) c++;
+    else w++;
+  });
+  const tot = BANCO.length;
+  const pct = tot ? Math.round(c/tot*100) : 0;
+  const cne = calcCNE(c, tot);
+  const data = {modulo:'Pensamiento Matemático', correctas:c, total:tot, pct:pct, cne:cne, fecha:new Date().toISOString(), correctos:c};
+  try{
+    localStorage.setItem('exani_pm', JSON.stringify(data));
+    localStorage.setItem('simulacro_Pensamiento_Matemático', JSON.stringify(data));
+  }catch(e){}
+  window.location.href = 'ri.html';
+}
+</script>
+</body>
+</html>

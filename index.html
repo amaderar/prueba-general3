@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EXANI-II Simplificado — Asesorías Académicas Izamal</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--azul:#0033cc;--azul-dark:#002299;--azul-light:#e8eeff;--naranja:#ff4500;--bg:#f0f4ff;--card:#fff;--txt:#1a1a2e;--sub:#5a6080}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh}
+.hero{background:linear-gradient(135deg,var(--azul),var(--azul-dark));color:#fff;padding:18px 16px 22px;text-align:center}
+.hero img{width:90px;height:90px;object-fit:contain;background:#fff;border-radius:50%;padding:6px;margin-bottom:8px}
+.hero-title{font-size:1.25rem;font-weight:800}
+.hero-title span{color:#ffd080}
+.hero-sub{font-size:.82rem;opacity:.9;margin-top:4px}
+.wrap{max-width:900px;margin:0 auto;padding:18px 14px 40px}
+.card{background:var(--card);border-radius:14px;padding:20px;box-shadow:0 6px 24px rgba(0,51,204,.13);margin-bottom:16px}
+.card-title{font-size:1rem;font-weight:800;color:var(--azul);margin-bottom:8px}
+.card p{font-size:.86rem;line-height:1.6;color:var(--sub)}
+.btn{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--azul),var(--azul-dark));color:#fff;font-size:.95rem;font-weight:800;cursor:pointer;margin-top:12px}
+.btn-ghost{width:100%;padding:12px;border-radius:12px;background:#fff;color:var(--azul);border:2px solid var(--azul);font-weight:800;cursor:pointer;margin-top:10px}
+.mod-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:12px}
+.mod-card{border:2px solid #d0d8f0;border-radius:12px;padding:14px;text-align:center;cursor:pointer;background:#fff}
+.mod-card:hover{border-color:var(--azul);background:var(--azul-light)}
+.mod-emoji{font-size:1.8rem}
+.mod-name{font-weight:800;font-size:.88rem;margin:6px 0 2px}
+.mod-meta{font-size:.72rem;color:var(--sub);line-height:1.4}
+.mod-status{font-size:.72rem;font-weight:800;margin-top:6px;padding:4px 8px;border-radius:20px;display:inline-block}
+.status-done{background:#d4edda;color:#155724}
+.status-pending{background:#fff3cd;color:#856404}
+input#input-nombre{width:100%;padding:13px;border:2px solid #d0d8f0;border-radius:10px;font-size:.95rem;outline:none;margin-top:8px}
+input#input-nombre:focus{border-color:var(--azul)}
+.aviso{font-size:.82rem;background:#fff8f0;border-left:4px solid var(--naranja);padding:10px 12px;border-radius:0 10px 10px 0;line-height:1.6;margin-top:12px}
+@media(max-width:600px){.mod-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <img src="logo.png" alt="Logo Asesorías Académicas Izamal" onerror="this.style.display='none'">
+  <div class="hero-title">Asesorías Académicas <span>Izamal</span></div>
+  <div class="hero-sub">EXANI-II Simplificado • Prueba Diagnóstica • 90 reactivos</div>
+</div>
+
+<div class="wrap">
+
+<!-- NOMBRE DEL ALUMNO -->
+<div class="card">
+  <div class="card-title">👤 ¿Quién hace el simulacro?</div>
+  <p>Escribe tu nombre completo. Así aparecerá en tus resultados y en la hoja del maestro.</p>
+  <input id="input-nombre" type="text" placeholder="Ejemplo: María López García" autocomplete="name" />
+  <p id="aviso-nombre" style="font-size:.78rem;color:#cc3300;margin-top:6px;display:none">⚠️ Escribe tu nombre para poder empezar.</p>
+  <div class="aviso">Tu nombre <strong>solo se usa para identificar tu resultado</strong> en la hoja del maestro. No se comparte con nadie más.</div>
+</div>
+
+<!-- COMENZAR -->
+<div class="card">
+  <div class="card-title">🚀 Comenzar simulacro</div>
+  <p>Haz los 3 módulos en orden. Al terminar cada uno, pasas automáticamente al siguiente. <strong>No verás si tu respuesta es correcta</strong> hasta llegar a Resultados.</p>
+  <button class="btn" onclick="iniciarSimulacro()">▶ Empezar desde Pensamiento Matemático</button>
+  <button class="btn-ghost" onclick="verResultados()">📊 Ver mis resultados</button>
+</div>
+
+<!-- MÓDULOS -->
+<div class="card">
+  <div class="card-title">📚 Módulos</div>
+  <p>Puedes entrar a un módulo por separado, pero para ver el resultado global debes completar los 3.</p>
+  <div class="mod-grid">
+    <div class="mod-card" onclick="irModulo('pm')">
+      <div class="mod-emoji">🔢</div>
+      <div class="mod-name">Pensamiento Matemático</div>
+      <div class="mod-meta">30 preguntas<br>45 minutos</div>
+      <div class="mod-status status-pending" id="st-pm">Pendiente</div>
+    </div>
+    <div class="mod-card" onclick="irModulo('ri')">
+      <div class="mod-emoji">✍️</div>
+      <div class="mod-name">Redacción Indirecta</div>
+      <div class="mod-meta">30 preguntas<br>40 minutos</div>
+      <div class="mod-status status-pending" id="st-ri">Pendiente</div>
+    </div>
+    <div class="mod-card" onclick="irModulo('cl')">
+      <div class="mod-emoji">📖</div>
+      <div class="mod-name">Comprensión Lectora</div>
+      <div class="mod-meta">30 preguntas<br>40 minutos</div>
+      <div class="mod-status status-pending" id="st-cl">Pendiente</div>
+    </div>
+  </div>
+  <button class="btn-ghost" onclick="borrarTodo()">🔄 Borrar mi progreso y empezar de nuevo</button>
+</div>
+
+<div class="card">
+  <div class="card-title">ℹ️ ¿Cómo funciona?</div>
+  <p>1. Escribe tu nombre.<br>2. Haz PM → RI → CL.<br>3. En Resultados verás tus aciertos por área y tu Índice CENEVAL estimado.<br>4. Da clic en <strong>"Enviar mi resultado al maestro"</strong> para que quede en la hoja de cálculo.</p>
+</div>
+
+</div>
+
+<script>
+const MODULOS_INFO = {
+  pm: {archivo:'pm.html'},
+  ri: {archivo:'ri.html'},
+  cl: {archivo:'cl.html'}
+};
+function getData(key){ try{ return JSON.parse(localStorage.getItem(key)||'null'); }catch(e){ return null; } }
+function actualizarEstados(){
+  const pm = getData('exani_pm') || getData('simulacro_Pensamiento_Matemático');
+  const ri = getData('exani_ri') || getData('simulacro_Redacción_Indirecta');
+  const cl = getData('exani_cl') || getData('simulacro_Comprensión_Lectora');
+  const set = (id, d) => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    if(d){ el.textContent = '✅ Hecho: ' + (d.correctos ?? d.correctas) + '/' + d.total; el.className = 'mod-status status-done'; }
+    else { el.textContent = 'Pendiente'; el.className = 'mod-status status-pending'; }
+  };
+  set('st-pm', pm); set('st-ri', ri); set('st-cl', cl);
+}
+function getNombre(){
+  const el = document.getElementById('input-nombre');
+  return (el.value || '').trim();
+}
+function iniciarSimulacro(){
+  const nombre = getNombre();
+  if(!nombre){
+    document.getElementById('aviso-nombre').style.display = 'block';
+    document.getElementById('input-nombre').focus();
+    return;
+  }
+  try{
+    localStorage.setItem('exani_nombre', nombre);
+    localStorage.setItem('portalUrl', window.location.href);
+  }catch(e){}
+  window.location.href = MODULOS_INFO.pm.archivo;
+}
+function irModulo(cual){
+  const nombre = getNombre();
+  if(!nombre){
+    document.getElementById('aviso-nombre').style.display = 'block';
+    document.getElementById('input-nombre').focus();
+    return;
+  }
+  try{ localStorage.setItem('exani_nombre', nombre); }catch(e){}
+  window.location.href = MODULOS_INFO[cual].archivo;
+}
+function verResultados(){
+  const nombre = getNombre();
+  if(nombre){ try{ localStorage.setItem('exani_nombre', nombre); }catch(e){} }
+  window.location.href = 'resultados.html';
+}
+function borrarTodo(){
+  if(!confirm('¿Borrar tu progreso y tu nombre y empezar de nuevo?')) return;
+  try{
+    localStorage.removeItem('exani_pm'); localStorage.removeItem('exani_ri'); localStorage.removeItem('exani_cl');
+    localStorage.removeItem('simulacro_Pensamiento_Matemático'); localStorage.removeItem('simulacro_Redacción_Indirecta'); localStorage.removeItem('simulacro_Comprensión_Lectora');
+    localStorage.removeItem('exani_nombre');
+  }catch(e){}
+  document.getElementById('input-nombre').value = '';
+  actualizarEstados();
+}
+// Al cargar, si ya había nombre, lo deja escrito
+try{
+  const guardado = localStorage.getItem('exani_nombre');
+  if(guardado) document.getElementById('input-nombre').value = guardado;
+}catch(e){}
+actualizarEstados();
+</script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resultados — EXANI-II Simplificado</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--azul:#0033cc;--azul-dark:#002299;--azul-light:#e8eeff;--naranja:#ff4500;--bg:#f0f4ff;--card:#fff;--txt:#1a1a2e;--sub:#5a6080}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh}
+.hero{background:linear-gradient(135deg,var(--azul),var(--azul-dark));color:#fff;padding:16px}
+.hero-inner{max-width:900px;margin:0 auto;display:flex;gap:12px;align-items:center}
+.hero-title{font-size:1.15rem;font-weight:800}
+.hero-title span{color:#ffd080}
+.hero-sub{font-size:.8rem;opacity:.9}
+.wrap{max-width:900px;margin:0 auto;padding:18px 14px 40px}
+.card{background:var(--card);border-radius:14px;padding:22px;box-shadow:0 6px 24px rgba(0,51,204,.13);margin-bottom:16px}
+.card h2{text-align:center;color:var(--azul);margin-bottom:6px}
+.sub{text-align:center;color:var(--sub);font-size:.85rem;margin-bottom:18px;line-height:1.6}
+.cne-box{background:linear-gradient(135deg,var(--azul),var(--azul-dark));border-radius:14px;padding:22px;text-align:center;color:#fff;margin-bottom:18px}
+.cne-titulo{font-size:.75rem;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.5px}
+.cne-valor{font-size:3rem;font-weight:800;color:#ffd080;line-height:1.1}
+.cne-max{font-size:1rem;opacity:.7}
+.cne-lbl{font-weight:700;margin:6px 0 10px}
+.cne-track{height:10px;background:rgba(255,255,255,.25);border-radius:20px;overflow:hidden}
+.cne-fill{height:100%;background:#ffd080}
+.cne-escala{display:flex;justify-content:space-between;font-size:.65rem;opacity:.8;margin-top:5px}
+.cne-note{font-size:.75rem;color:var(--sub);line-height:1.6;text-align:center;margin-top:10px}
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin-bottom:16px}
+th,td{padding:11px 8px;text-align:left;border-bottom:1px solid #e8eeff}
+th{background:var(--azul-light);color:var(--azul);font-weight:800}
+td:first-child{font-weight:700}
+tr.total{background:#e8eeff;font-weight:800}
+.btn{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--azul),var(--azul-dark));color:#fff;font-size:.95rem;font-weight:800;cursor:pointer;margin-top:10px}
+.btn-green{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,#00a651,#007a3d);color:#fff;font-size:.95rem;font-weight:800;cursor:pointer;margin-top:10px}
+.btn-green:disabled{opacity:.6;cursor:default}
+.btn-ghost{width:100%;padding:12px;border-radius:12px;background:#fff;color:var(--azul);border:2px solid var(--azul);font-weight:800;cursor:pointer;margin-top:10px}
+.warn{background:#fff8f0;border-left:4px solid var(--naranja);padding:12px 14px;border-radius:0 10px 10px 0;font-size:.85rem;line-height:1.6;margin-bottom:14px}
+@media(max-width:600px){table{font-size:.78rem}th,td{padding:8px 5px}.cne-valor{font-size:2.4rem}}
+</style>
+</head>
+<body>
+<div class="hero"><div class="hero-inner"><div><div class="hero-title">Asesorías Académicas <span>Izamal</span></div><div class="hero-sub">EXANI-II Simplificado • Resultados Finales</div></div></div></div>
+
+<div class="wrap">
+
+<div class="card" id="ok-card">
+  <h2>📊 Resumen de Resultados</h2>
+  <p style="text-align:center;font-size:1.05rem;font-weight:800;color:var(--azul);margin-bottom:4px" id="nombre-alumno">—</p>
+  <p class="sub" id="fecha">—</p>
+
+  <div class="cne-box">
+    <div class="cne-titulo">📊 ÍNDICE CENEVAL ESTIMADO GLOBAL</div>
+    <div><span class="cne-valor" id="cne-val">—</span><span class="cne-max"> / 1300</span></div>
+    <div class="cne-lbl" id="cne-lbl">—</div>
+    <div class="cne-track"><div class="cne-fill" id="cne-bar" style="width:0%"></div></div>
+    <div class="cne-escala"><span>700</span><span>850</span><span>1000</span><span>1150</span><span>1300</span></div>
+  </div>
+  <p class="cne-note" id="cne-note">—</p>
+
+  <table>
+    <thead>
+      <tr><th>Módulo</th><th>Aciertos</th><th>% Correcto</th><th>Índice CENEVAL</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>🔢 Pensamiento Matemático</td><td id="pm-a">—</td><td id="pm-p">—</td><td id="pm-c">—</td></tr>
+      <tr><td>✍️ Redacción Indirecta</td><td id="ri-a">—</td><td id="ri-p">—</td><td id="ri-c">—</td></tr>
+      <tr><td>📖 Comprensión Lectora</td><td id="cl-a">—</td><td id="cl-p">—</td><td id="cl-c">—</td></tr>
+      <tr class="total"><td>TOTAL</td><td id="tot-a">—</td><td id="tot-p">—</td><td id="tot-c">—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warn">
+    <strong>¿Cómo se calculó?</strong><br>
+    El Índice Global <strong>NO está escrito a mano</strong>. Se calcula con el total real de los 3 módulos:<br>
+    <strong>Total = PM.total + RI.total + CL.total</strong> • <strong>% = Aciertos / Total × 100</strong><br>
+    <strong>Z = (% − 50) / 16.67</strong> • <strong>ICNE = 1000 + 100 × Z</strong>, limitado a 700–1300.
+  </div>
+
+  <button class="btn-green" id="btn-enviar" onclick="enviarResultado()">📤 Enviar mi resultado al maestro</button>
+  <p id="msg-envio" style="font-size:.82rem;text-align:center;margin-top:8px;color:var(--sub)"></p>
+
+  <button class="btn" onclick="location.href='index.html'">← Volver al inicio</button>
+  <button class="btn-ghost" onclick="if(confirm('¿Borrar resultados y volver a empezar?')){localStorage.removeItem('exani_pm');localStorage.removeItem('exani_ri');localStorage.removeItem('exani_cl');localStorage.removeItem('simulacro_Pensamiento_Matemático');localStorage.removeItem('simulacro_Redacción_Indirecta');localStorage.removeItem('simulacro_Comprensión_Lectora');localStorage.removeItem('exani_envio_id');location.href='index.html';}">🔄 Hacer otro intento</button>
+</div>
+
+<div class="card" id="falta-card" style="display:none">
+  <h2>⏳ Aún te falta un área</h2>
+  <p style="text-align:center;font-size:1.05rem;font-weight:800;color:var(--azul);margin-bottom:8px" id="nombre-alumno-falta">—</p>
+  <p class="sub">Completa las 3 áreas para ver tu resultado global.</p>
+  <div class="warn" id="falta-txt"></div>
+  <button class="btn" onclick="location.href='index.html'">← Ir a la página principal</button>
+</div>
+
+</div>
+
+<script>
+// 👇 MISMA URL QUE PM, RI Y CL - LA NUEVA DESPUÉS DE AGREGAR doPost
+const API_URL = 'https://script.google.com/macros/s/AKfycbyAI3A5OPqZ8qNdC8Ds165SZUPTUGTVJATMuZ0Gcm1y8-fjx07Qx_P9-GMl7l1WsrM/exec';
+
+function calcCNE(c,t){
+  if(!t) return 1000;
+  const z = ((c/t)*100 - 50) / 16.67;
+  return Math.min(1300, Math.max(700, Math.round(1000 + 100*z)));
+}
+function cneColor(c){ return c>=1050 ? '#1e8449' : c>=950 ? '#d4ac0d' : '#cc3300'; }
+function cneLabel(c){
+  return c>=1100 ? 'Muy por encima de la media' : c>=1050 ? 'Por encima de la media' : c>=950 ? 'Cerca de la media' : c>=900 ? 'Por debajo de la media' : 'Muy por debajo de la media';
+}
+
+const nombreAlumno = localStorage.getItem('exani_nombre') || 'Sin nombre';
+const elNombre = document.getElementById('nombre-alumno');
+if(elNombre) elNombre.textContent = '👤 ' + nombreAlumno;
+const elNombreFalta = document.getElementById('nombre-alumno-falta');
+if(elNombreFalta) elNombreFalta.textContent = '👤 ' + nombreAlumno;
+
+const pm = JSON.parse(localStorage.getItem('exani_pm') || localStorage.getItem('simulacro_Pensamiento_Matemático') || 'null');
+const ri = JSON.parse(localStorage.getItem('exani_ri') || localStorage.getItem('simulacro_Redacción_Indirecta') || 'null');
+const cl = JSON.parse(localStorage.getItem('exani_cl') || localStorage.getItem('simulacro_Comprensión_Lectora') || 'null');
+
+let totC = 0, totT = 0, pct = 0, cne = 1000;
+
+if(!pm || !ri || !cl){
+  document.getElementById('ok-card').style.display = 'none';
+  document.getElementById('falta-card').style.display = 'block';
+  const faltan = [];
+  if(!pm) faltan.push('Pensamiento Matemático');
+  if(!ri) faltan.push('Redacción Indirecta');
+  if(!cl) faltan.push('Comprensión Lectora');
+  document.getElementById('falta-txt').textContent = 'Falta: ' + faltan.join(', ');
+} else {
+  pm.correctos = pm.correctos ?? pm.correctas;
+  ri.correctos = ri.correctos ?? ri.correctas;
+  cl.correctos = cl.correctos ?? cl.correctas;
+
+  totC = pm.correctos + ri.correctos + cl.correctos;
+  totT = pm.total + ri.total + cl.total;
+  pct = Math.round(totC / totT * 100);
+  cne = calcCNE(totC, totT);
+  const col = cneColor(cne);
+
+  document.getElementById('fecha').textContent = 'Total: ' + totC + ' de ' + totT + ' reactivos • ' + pct + '% correcto';
+  document.getElementById('cne-val').textContent = cne;
+  document.getElementById('cne-val').style.color = col;
+  document.getElementById('cne-lbl').textContent = cneLabel(cne);
+  document.getElementById('cne-lbl').style.color = col;
+  document.getElementById('cne-bar').style.width = ((cne - 700) / 600 * 100) + '%';
+  document.getElementById('cne-bar').style.background = col;
+  document.getElementById('cne-note').textContent = 'Índice CENEVAL Global DINÁMICO calculado con ' + totC + ' aciertos de ' + totT + ' (' + pct + '%). Fórmula: Z=(% - 50)/16.67, ICNE=1000+100Z.';
+
+  const set = (id, a, p, c) => {
+    document.getElementById(id + '-a').textContent = a;
+    document.getElementById(id + '-p').textContent = p;
+    document.getElementById(id + '-c').textContent = c;
+  };
+  set('pm', pm.correctos + '/' + pm.total, Math.round(pm.correctos / pm.total * 100) + '%', pm.cne ?? calcCNE(pm.correctos, pm.total));
+  set('ri', ri.correctos + '/' + ri.total, Math.round(ri.correctos / ri.total * 100) + '%', ri.cne ?? calcCNE(ri.correctos, ri.total));
+  set('cl', cl.correctos + '/' + cl.total, Math.round(cl.correctos / cl.total * 100) + '%', cl.cne ?? calcCNE(cl.correctos, cl.total));
+  set('tot', totC + '/' + totT, pct + '%', cne);
+}
+
+// ===== ENVÍO SIN DUPLICADOS - FUNCIONA EN GITHUB PAGES =====
+// GitHub Pages es estático, por eso usamos mode:'no-cors'.
+// Con no-cors no podemos leer la respuesta, pero Google sí la recibe y la guarda.
+let yaEnviado = false;
+
+// Si ya se envió este intento, deja el botón en enviado
+const envioPrevio = localStorage.getItem('exani_envio_id');
+if (envioPrevio && pm && ri && cl) {
+  const btn0 = document.getElementById('btn-enviar');
+  const msg0 = document.getElementById('msg-envio');
+  if (btn0) { btn0.disabled = true; btn0.textContent = '✅ Ya enviado al maestro'; }
+  if (msg0) { msg0.textContent = 'Este resultado ya quedó en la hoja del maestro.'; }
+  yaEnviado = true;
+}
+
+async function enviarResultado(){
+  if(yaEnviado) return;
+  const msg = document.getElementById('msg-envio');
+  const btn = document.getElementById('btn-enviar');
+  if(!pm || !ri || !cl){ msg.textContent = 'Aún te falta un módulo.'; return; }
+  if(!API_URL || API_URL.includes('PEGA_AQUI')){
+    msg.textContent = '⚠️ El maestro aún no configuró la hoja. Tu resultado sí quedó guardado aquí.';
+    return;
+  }
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+  msg.textContent = 'Enviando tu resultado...';
+
+  // ID único por intento: nombre + fecha + totales. Si le dan F5, es el mismo y no duplica.
+  let idEnvio = localStorage.getItem('exani_envio_id');
+  if (!idEnvio) {
+    idEnvio = 'env_' + Date.now() + '_' + Math.random().toString(36).slice(2,8);
+    localStorage.setItem('exani_envio_id', idEnvio);
+  }
+
+  const payload = {
+    idEnvio: idEnvio,
+    nombre: nombreAlumno,
+    pm_correctas: pm.correctos, pm_total: pm.total,
+    ri_correctas: ri.correctos, ri_total: ri.total,
+    cl_correctas: cl.correctos, cl_total: cl.total,
+    total_correctas: totC, total_total: totT,
+    pct: pct, cne: cne
+  };
+  try{
+    await fetch(API_URL, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain'}, body: JSON.stringify(payload) });
+    yaEnviado = true;
+    btn.textContent = '✅ Enviado al maestro';
+    msg.textContent = '✅ Listo, ' + nombreAlumno + '. Tu resultado ya quedó en la hoja del maestro.';
+  }catch(e){
+    btn.disabled = false;
+    btn.textContent = '📤 Intentar de nuevo';
+    msg.textContent = 'No se pudo enviar. Revisa tu internet e inténtalo de nuevo.';
+  }
+}
+</script>
+</body>
+</html>

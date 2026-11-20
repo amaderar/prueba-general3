@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redacción Indirecta — EXANI-II Simplificado</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--azul:#0033cc;--azul-dark:#002299;--azul-light:#e8eeff;--naranja:#ff4500;--bg:#f0f4ff;--card:#fff;--txt:#1a1a2e;--sub:#5a6080}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--txt);min-height:100vh}
+.hero{background:linear-gradient(135deg,var(--azul),var(--azul-dark));color:#fff;padding:16px}
+.hero-inner{max-width:900px;margin:0 auto;display:flex;gap:12px;align-items:center}
+.hero-title{font-size:1.15rem;font-weight:800}
+.hero-title span{color:#ffd080}
+.hero-sub{font-size:.8rem;opacity:.9}
+.wrap{max-width:900px;margin:0 auto;padding:16px 14px 40px}
+.card{background:var(--card);border-radius:14px;padding:20px;box-shadow:0 6px 24px rgba(0,51,204,.13);margin-bottom:16px}
+.card h2{text-align:center;color:var(--azul);margin-bottom:10px}
+.card p{font-size:.88rem;line-height:1.6;color:var(--sub);text-align:center}
+.btn{width:100%;padding:13px;border:none;border-radius:12px;background:linear-gradient(135deg,var(--azul),var(--azul-dark));color:#fff;font-size:.95rem;font-weight:800;cursor:pointer;margin-top:12px}
+.btn-sec{width:100%;padding:11px;border-radius:12px;background:#fff;color:var(--azul);border:2px solid var(--azul);font-weight:800;cursor:pointer;margin-top:10px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;gap:10px;flex-wrap:wrap}
+.timer-box{background:var(--azul);color:#fff;padding:7px 14px;border-radius:20px;font-weight:800;font-size:.85rem}
+.timer-box.warn{background:#ff8c00}.timer-box.danger{background:#cc3300}
+.progress-track{height:10px;background:#e8eeff;border-radius:20px;overflow:hidden;margin-bottom:14px}
+.progress-bar{height:100%;background:linear-gradient(90deg,var(--azul),#00aaff)}
+.nav-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-bottom:16px}
+.nav-btn{padding:8px 0;border:2px solid #d0d8f0;background:#fff;border-radius:8px;cursor:pointer;font-weight:700}
+.nav-btn.answered{background:#e8eeff;border-color:var(--azul);color:var(--azul)}
+.nav-btn.current{background:var(--azul);color:#fff;border-color:var(--azul)}
+.q-num{font-size:.72rem;color:var(--sub);font-weight:700;letter-spacing:.3px;margin-bottom:6px}
+.q-text{font-size:.97rem;line-height:1.75;margin-bottom:18px}
+.options{display:flex;flex-direction:column;gap:10px}
+.opt-btn{border:2px solid #d0d8f0;border-radius:11px;background:#fff;padding:12px 15px;text-align:left;cursor:pointer;font-size:.93rem;line-height:1.5;display:flex;gap:10px;align-items:flex-start;width:100%}
+.opt-btn:hover{border-color:var(--azul);background:var(--azul-light)}
+.opt-letter{min-width:28px;height:28px;border-radius:50%;background:#e8eeff;font-weight:800;font-size:.82rem;display:flex;align-items:center;justify-content:center;color:var(--azul);flex-shrink:0}
+.opt-btn.selected{border-color:#0033cc;background:#e8eeff}
+.opt-btn.selected .opt-letter{background:#0033cc;color:#fff}
+.exam-footer{padding:0 0 4px;display:flex;gap:9px;margin-top:16px}
+.btn-nav{flex:1;padding:11px 6px;border-radius:10px;border:2px solid #d0d8f0;background:#fff;font-weight:700;cursor:pointer}
+.btn-nav:disabled{opacity:.35;cursor:default}
+.btn-entregar{padding:11px 18px;border-radius:10px;border:none;font-weight:800;cursor:pointer;color:#fff;background:linear-gradient(135deg,var(--naranja),#ff8c00)}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:center;justify-content:center;z-index:99}
+.modal-bg.open{display:flex}
+.modal{background:#fff;border-radius:14px;padding:22px;max-width:420px;width:90%}
+.modal h3{margin-bottom:10px;color:var(--azul)}
+.modal p{font-size:.88rem;line-height:1.6}
+.modal-btns{display:flex;gap:10px;margin-top:16px;justify-content:flex-end}
+.btn-cancel{padding:10px 16px;border-radius:10px;border:2px solid #d0d8f0;background:#fff;font-weight:700;cursor:pointer}
+.btn-confirm{padding:10px 16px;border-radius:10px;border:none;background:var(--azul);color:#fff;font-weight:800;cursor:pointer}
+.aviso{font-size:.82rem;background:#fff8f0;border-left:4px solid var(--naranja);padding:10px 12px;border-radius:0 10px 10px 0;line-height:1.6;margin-top:12px}
+@media(max-width:600px){.nav-grid{grid-template-columns:repeat(6,1fr)}}
+</style>
+</head>
+<body>
+<div class="hero"><div class="hero-inner"><div><div class="hero-title">Asesorías Académicas <span>Izamal</span></div><div class="hero-sub">EXANI-II Simplificado • 2 de 3 • Redacción Indirecta</div></div></div></div>
+
+<div class="wrap">
+
+<div class="card" id="screen-home">
+  <h2>✍️ Redacción Indirecta</h2>
+  <p>Ortografía, gramática y cohesión de textos.<br><strong>En esta versión NO verás explicaciones ni si tu respuesta es correcta</strong> hasta el final de los 3 módulos.<br>Puedes cambiar tu respuesta mientras estés en el módulo. Al terminar, pasarás automáticamente a <strong>Comprensión Lectora</strong>.</p>
+  <div class="aviso">⏱️ Tendrás <strong>40 minutos</strong>. Contesta todas las preguntas. Si se acaba el tiempo, se guardará lo que lleves y pasarás al siguiente módulo.</div>
+  <button class="btn" id="btn-empezar" onclick="cargarBancoRI()">▶ Empezar Redacción Indirecta</button>
+  <p id="msg-carga" style="font-size:.82rem;text-align:center;margin-top:8px;color:var(--sub)"></p>
+  <button class="btn-sec" onclick="location.href='index.html'">← Volver al portal</button>
+</div>
+
+<div class="card" id="screen-exam" style="display:none">
+  <div class="topbar"><span id="q-num">Pregunta 1</span><span class="timer-box" id="timer-box">30:00</span></div>
+  <div class="progress-track"><div class="progress-bar" id="progress-bar" style="width:0%"></div></div>
+  <div class="nav-grid" id="nav-grid"></div>
+  <div class="q-text" id="q-text"></div>
+  <div class="options" id="options"></div>
+  <div class="explanation" id="explanation" style="display:none"></div>
+  <div class="exam-footer">
+    <button class="btn-nav" id="btn-prev" onclick="goTo(STATE.qIdx-1)">← Anterior</button>
+    <button class="btn-nav" id="btn-next-nav" onclick="goTo(STATE.qIdx+1)">Siguiente →</button>
+    <button class="btn-entregar" id="btn-entregar" style="display:none" onclick="pedirConfirmar()">Siguiente módulo →</button>
+  </div>
+</div>
+
+<div class="card" id="screen-timeout" style="display:none">
+  <h2 style="color:var(--naranja)">⏰ Tiempo agotado</h2>
+  <p>Se agotó el tiempo disponible.</p>
+  <button class="btn" onclick="finishAndShow()">Siguiente módulo →</button>
+</div>
+
+</div>
+
+<div class="modal-bg" id="modal-bg">
+  <div class="modal"><h3>¿Terminar este módulo?</h3><p id="modal-msg"></p>
+    <div class="modal-btns"><button class="btn-cancel" onclick="cerrarModal()">Cancelar</button><button class="btn-confirm" onclick="confirmarEntrega()">Siguiente módulo →</button></div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+// CONFIG - MISMA APPS SCRIPT QUE PM, SOLO CAMBIA ?sheet=RI
+// ============================================================
+const API_URL = 'https://script.google.com/macros/s/AKfycbyAI3A5OPqZ8qNdC8Ds165SZUPTUGTVJATMuZ0Gcm1y8-fjx07Qx_P9-GMl7l1WsrM/exec';
+const CSV_SEP = '|';
+const TIEMPO_MIN = 40;
+const NOMBRE = 'Redacción Indirecta';
+
+// BANCO DE RESPALDO - su BANCO_RAW original, se usa solo si Drive falla
+const BANCO_RAW = [
+  {q:'¿Cuál oración usa correctamente el acento diacrítico?', opts:['El me preguntó si quería más café.','Él me preguntó si quería más café.','Él me pregunto si quería mas café.'], answer:'Él me preguntó si quería más café.', exp:'Él pronombre y más cantidad llevan tilde.'},
+  {q:'Elige la oración acentuada correctamente.', opts:['El joven eligio una corbata verde.','El jóven eligió una corbata verde.','El joven eligió una corbata verde.'], answer:'El joven eligió una corbata verde.', exp:'Joven grave en n no lleva tilde, eligió aguda sí.'},
+  {q:'¿Cuál palabra debe llevar tilde?', opts:['Examen','Árbol','Lapiz'], answer:'Árbol', exp:'Árbol grave en l lleva tilde.'},
+  {q:'Elige la opción con acentuación correcta.', opts:['La proxima generación tardara diez años.','La próxima generación tardará diez años.','La próxima generacion tardara diez años.'], answer:'La próxima generación tardará diez años.', exp:'Próxima esdrújula, tardará aguda en vocal.'},
+  {q:'Completa: No sé ___ vienes, pero ___ debes estudiar.', opts:['si - sí','sí - si','si - si'], answer:'si - sí', exp:'Si condicional sin tilde, sí afirmación con tilde.'},
+  {q:'¿Cuál oración está acentuada correctamente?', opts:['Tu abuela ya llegó, explícale por qué te reprobaron.','Tu abuela ya llego, explicale por que te reprobaron.','Tu abuela ya llegó, explicale por que te reprobaron.'], answer:'Tu abuela ya llegó, explícale por qué te reprobaron.', exp:'Llegó, explícale y por qué llevan tilde.'},
+  {q:'Completa con las grafías correctas: Su bondad y _ene_olencia fueron tales que tra__endieron su vida.', opts:['b - v - c','b - v - sc','v - v - s'], answer:'b - v - sc', exp:'Benevolencia y trascendieron con sc.'},
+  {q:'Completa: El profesor frun__ió el ceño, pues estaba ha__tiado de los intentos de per__uasión.', opts:['c - s - s','z - z - s','s - s - c'], answer:'c - s - s', exp:'Frunció, hastiado, persuasión.'},
+  {q:'Completa: La nieta es una persona bastante e__éntrica. Sufrió un a__idente y lee di__ionarios.', opts:['xc - cc - cc','x - cc - x','xc - cc - x'], answer:'xc - cc - cc', exp:'Excéntrica, accidente, diccionarios.'},
+  {q:'Elige la oración escrita correctamente.', opts:['El anehlo de superación es la clabe para salir avante.','El anhelo de superación es la clave para salir avante.','El anhelo de superacion es la clave para salir avante.'], answer:'El anhelo de superación es la clave para salir avante.', exp:'Anhelo con h, clave con v.'},
+  {q:'Completa: Un grupo de músicos irlande__es tuvo un percan__e atro__.', opts:['s - c - z','c - s - s','s - z - s'], answer:'s - c - z', exp:'Irlandeses, percance, atroz.'},
+  {q:'Elige la opción escrita correctamente.', opts:['La mujer exhigió que se le dejara llamar a un abogado.','La mujer exijió que se le dejara llamar a un abogado.','La mujer exigió que se le dejara llamar a un abogado.'], answer:'La mujer exigió que se le dejara llamar a un abogado.', exp:'Exigió con g, sin h.'},
+  {q:'Elige la oración puntuada correctamente.', opts:['¿Crees que mañana llueva?... Debo decidir si llevar sombrilla o no.','¿Crees que mañana llueva? Debo decidir si llevar sombrilla o no.','¿Crees que mañana llueva...? Debo decidir si llevar sombrilla o no.'], answer:'¿Crees que mañana llueva?... Debo decidir si llevar sombrilla o no.', exp:'Puntos suspensivos fuera del signo, punto final cierra.'},
+  {q:'Elige el enunciado puntuado correctamente.', opts:['Para crear música es necesario contemplar los siguientes elementos... melodía, armonía y ritmo.','Para crear música es necesario contemplar los siguientes elementos: melodía, armonía y ritmo.','Para crear música es necesario contemplar los siguientes elementos, melodía, armonía y ritmo.'], answer:'Para crear música es necesario contemplar los siguientes elementos: melodía, armonía y ritmo.', exp:'Dos puntos antes de enumeración.'},
+  {q:'Elige la oración puntuada correctamente.', opts:['La obra fue arrolladora, la gente aplaudía de pie y no se cansaban de pedir que el autor saliera.','La obra fue arrolladora, la gente aplaudía de pie y no se cansaban de pedir que el "autor" saliera.','La obra fue arrolladora, la gente aplaudía de pie y no se cansaban de pedir que el autor saliera,'], answer:'La obra fue arrolladora, la gente aplaudía de pie y no se cansaban de pedir que el autor saliera.', exp:'Sin comillas innecesarias y con punto final.'},
+  {q:'Elige la oración escrita correctamente.', opts:['La camisa y el pantalón negros fueron enviados a la tintorería.','La camisa y el pantalón negro fueron enviados a la tintorería.','La camisa y el pantalón negra fueron enviados a la tintorería.'], answer:'La camisa y el pantalón negros fueron enviados a la tintorería.', exp:'Adjetivo en masculino plural para dos sustantivos.'},
+  {q:'Elige la oración con concordancia correcta.', opts:['La mayoría de los pasajeros estaban asustadas y confundidas.','La mayoría de los pasajeros estaban asustados y confundidos.','La mayoría de los pasajeros estaba asustadas y confundidas.'], answer:'La mayoría de los pasajeros estaban asustados y confundidos.', exp:'Concordancia en masculino plural.'},
+  {q:'Completa: No se sabe ___ sea ___ papá de la niña, puede ser ___ exnovio.', opts:['el - un - el','él - un - él','el - él - un'], answer:'el - un - el', exp:'Artículos, ninguno es pronombre, sin tilde.'},
+  {q:'Completa: ___ rapero que se subió ___ camión vio mi ropa y salió con ___ rima.', opts:['El - al - una','Él - a el - una','El - a el - una'], answer:'El - al - una', exp:'El artículo, a + el = al.'},
+  {q:'Completa: La tarifa ___ agua llegó más alta ___ mes, debemos ahorrar.', opts:['del - este','de el - este','de él - éste'], answer:'del - este', exp:'De + el = del, este demostrativo sin tilde.'},
+  {q:'"El proyecto requería mucho tiempo; ___, el equipo lo terminó antes del plazo."', opts:['además','no obstante','porque'], answer:'no obstante', exp:'No obstante expresa contraste.'},
+  {q:'Los enfriadores tipo K no son adecuados para computadoras de gama alta, sino, ___ para equipos de bajo consumo.', opts:['más bien','en realidad','mejor dicho'], answer:'más bien', exp:'Más bien rectifica y propone alternativa.'},
+  {q:'La estrategia de ventas no solo aumentó el consumo en un 34%, ___ ahora otras marcas piden colaboraciones.', opts:['mejor aún','más bien','pero'], answer:'mejor aún', exp:'Mejor aún añade algo que supera lo anterior.'},
+  {q:'Completa: La jefa citó a Rogelio para que ___ explicara lo sucedido. Cuando ___ informaron que estaba en la sala, ___ llamó para que ___ acompañara.', opts:['le - lo - la','le - le - lo','lo - le - la'], answer:'le - lo - la', exp:'Le a ella, lo a Rogelio, la a ella.'},
+  {q:'Señala el significado equivalente a la palabra marcada: "Es una chica muy nerviosa, hay que hablarle sin alzar la voz."', opts:['furiosa','delicada','alterable'], answer:'alterable', exp:'Alterable: se altera con facilidad.'},
+  {q:'Señala el antónimo de "fluctuar" en: "La convicción no se permite fluctuar cuando perdemos el ánimo."', opts:['variar','oscilar','permanecer'], answer:'permanecer', exp:'Fluctuar es variar, su opuesto es permanecer.'},
+  {q:'El periódico busca un artículo de opinión. ¿Cuál fragmento cumple el objetivo?', opts:['El pasado octubre la compañía presentó su nuevo dispositivo.','Las redes son computadoras interconectadas que comparten información.','Diariamente surge un dispositivo que promete superar al anterior. ¡Vaya mentira! Basta mirar alrededor: gente siempre conectada.'], answer:'Diariamente surge un dispositivo que promete superar al anterior. ¡Vaya mentira! Basta mirar alrededor: gente siempre conectada.', exp:'Artículo de opinión: postura subjetiva y argumentativa.'},
+  {q:'Un profesor revisa textos para elegir una reseña de una película. ¿Cuál cumple?', opts:['Me gustan las películas de terror porque me hacen reír, esta estaba horrible.','El estreno es un hito para el cine de terror. Parte de un cliché pero lo hace como nadie: una pareja se extravía en un pueblo y despierta al mal.','Por si no lo saben, les cuento que Sacramento es como se les llama a las cosas de la iglesia.'], answer:'El estreno es un hito para el cine de terror. Parte de un cliché pero lo hace como nadie: una pareja se extravía en un pueblo y despierta al mal.', exp:'Reseña: presenta, valora y describe con registro formal.'},
+  {q:'La revista de una universidad busca ensayos académicos sobre la responsabilidad con los animales. ¿Cuál propuesta es pertinente?', opts:['Desde chiquita he sido defensora de los animales, no comía carne.','Gandhi no creía que una vida fuese superior a otra, ni siquiera la de un insecto. Es necesario considerar que la inteligencia no debería manifestarse como abuso.','Los perros son bien listos. Yo a veces le hablo al mío fingiendo la voz.'], answer:'Gandhi no creía que una vida fuese superior a otra, ni siquiera la de un insecto. Es necesario considerar que la inteligencia no debería manifestarse como abuso.', exp:'Ensayo: tercera persona, autoridad, argumento formal.'},
+  {q:'Elige la oración escrita correctamente.', opts:['La promoción incluye un tablero de juego, así como un juego de dados negros y otro de dados grises.','La promoción incluye un tablero de juego, así como un juego de dados negro y otro de dados grises.','La promoción incluye un tablero de juego, así como un juego de dados negros y otro de dados gris.'], answer:'La promoción incluye un tablero de juego, así como un juego de dados negros y otro de dados grises.', exp:'Concordancia de adjetivos con sus sustantivos.'}
+];
+
+let BANCO = [];
+const STATE = {qIdx:0, answers:{}, timerSec:0, timerID:null};
+const $ = id => document.getElementById(id);
+const show = id => $(id).style.display = 'block';
+const hide = id => $(id).style.display = 'none';
+function fmtT(s){ return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0'); }
+
+// ===== SOLO ESTA PARTE CAMBIÓ - MISMA LÓGICA QUE PM =====
+function parseCSV_Pipe(texto){
+  const filas = [];
+  let fila = [], campo = '', enComillas = false;
+  for(let i=0;i<texto.length;i++){
+    const c = texto[i];
+    if(c === '"'){
+      if(enComillas && texto[i+1] === '"'){ campo += '"'; i++; }
+      else enComillas = !enComillas;
+    } else if(c === CSV_SEP && !enComillas){
+      fila.push(campo.trim()); campo = '';
+    } else if((c === '\n' || c === '\r') && !enComillas){
+      if(campo !== '' || fila.length){ fila.push(campo.trim()); filas.push(fila); fila = []; campo = ''; }
+      if(c === '\r' && texto[i+1] === '\n') i++;
+    } else { campo += c; }
+  }
+  if(campo !== '' || fila.length){ fila.push(campo.trim()); filas.push(fila); }
+  return filas.filter((f, idx) => idx > 0 && f.length >= 7 && f[2]);
+}
+// area|tema|pregunta|opciona|opcionb|opcioncorrecta|explicacion
+function filasABanco(filas){
+  return filas.map(f => ({
+    area: String(f[0]||'').trim(),
+    tema: String(f[1]||'').trim(),
+    q: String(f[2]||'').trim(),
+    opts: [String(f[3]||'').trim(), String(f[4]||'').trim(), String(f[5]||'').trim()],
+    answer: String(f[5]||'').trim(),
+    exp: String(f[6]||'').trim()
+  })).filter(r => r.q && r.opts[0] && r.opts[1] && r.opts[2]);
+}
+
+async function cargarBancoRI(){
+  const btn = $('btn-empezar');
+  const msg = $('msg-carga');
+  btn.disabled = true;
+  btn.textContent = 'Generando tu versión...';
+  msg.textContent = 'Leyendo tu banco de Drive (separador |)...';
+  let bancoCrudo = null;
+  if(API_URL && !API_URL.includes('PEGA_AQUI')){
+    try{
+      const resp = await fetch(API_URL + '?sheet=RI');
+      const contenido = await resp.text();
+      try{
+        const filas = JSON.parse(contenido);
+        if(Array.isArray(filas) && filas.length >= 5) bancoCrudo = filasABanco(filas);
+      }catch(eJson){
+        const filas = parseCSV_Pipe(contenido);
+        if(filas.length >= 5) bancoCrudo = filasABanco(filas);
+      }
+    }catch(e){ console.log('Fallo Drive, uso respaldo', e); }
+  }
+  if(!bancoCrudo || bancoCrudo.length < 5){
+    bancoCrudo = BANCO_RAW;
+    msg.textContent = '⚠️ No se pudo leer Drive, se usó el banco de respaldo.';
+  } else {
+    msg.textContent = '✅ Se leyeron ' + bancoCrudo.length + ' preguntas de Drive.';
+  }
+  BANCO = bancoCrudo;
+  setTimeout(() => { startExam(); }, 600);
+}
+// ===== FIN DEL CAMBIO =====
+
+function shuffleReactivo(r){
+  if(r._opts) return;
+  const ct = r.answer;
+  let opts = [...r.opts];
+  for(let i = opts.length-1; i > 0; i--){ const j = Math.floor(Math.random()*(i+1)); [opts[i],opts[j]] = [opts[j],opts[i]]; }
+  const letters = 'abcde'.split('').slice(0, opts.length);
+  r._opts = opts.map((t,i) => ({l:letters[i], t}));
+  r._answerLetter = r._opts.find(o => o.t === ct).l;
+}
+function startExam(){
+  STATE.qIdx = 0; STATE.answers = {};
+  BANCO.forEach(r => { delete r._opts; delete r._answerLetter; shuffleReactivo(r); });
+  hide('screen-home'); buildNavGrid(); show('screen-exam'); startTimer(); renderQuestion();
+}
+function startTimer(){
+  STATE.timerSec = TIEMPO_MIN * 60; renderTimer();
+  STATE.timerID = setInterval(() => { STATE.timerSec--; renderTimer(); if(STATE.timerSec <= 0){ clearInterval(STATE.timerID); timeOut(); } }, 1000);
+}
+function renderTimer(){
+  const tb = $('timer-box'); tb.textContent = fmtT(STATE.timerSec);
+  tb.className = 'timer-box' + (STATE.timerSec <= 60 ? ' danger' : STATE.timerSec <= 180 ? ' warn' : '');
+}
+function timeOut(){ hide('screen-exam'); show('screen-timeout'); }
+function finishAndShow(){ hide('screen-timeout'); showResults(); }
+function buildNavGrid(){
+  const grid = $('nav-grid'); grid.innerHTML = '';
+  BANCO.forEach((_,i) => {
+    const btn = document.createElement('button');
+    btn.className = 'nav-btn'; btn.id = 'nb-' + i; btn.textContent = i+1;
+    btn.onclick = (() => { const idx = i; return () => goTo(idx); })();
+    grid.appendChild(btn);
+  });
+  updateNavGrid();
+}
+function updateNavGrid(){
+  BANCO.forEach((r,i) => {
+    const btn = $('nb-' + i); if(!btn) return;
+    let cls = 'nav-btn';
+    if(STATE.answers.hasOwnProperty(i)) cls += ' answered';
+    if(i === STATE.qIdx) cls += ' current';
+    btn.className = cls;
+  });
+  $('progress-bar').style.width = (Object.keys(STATE.answers).length / BANCO.length * 100) + '%';
+}
+function goTo(idx){ if(idx < 0 || idx >= BANCO.length) return; STATE.qIdx = idx; renderQuestion(); }
+function renderQuestion(){
+  const r = BANCO[STATE.qIdx], n = BANCO.length;
+  $('q-num').textContent = `Pregunta ${STATE.qIdx+1} de ${n}`;
+  $('q-text').innerHTML = r.q;
+  $('btn-prev').disabled = (STATE.qIdx === 0);
+  $('btn-next-nav').disabled = (STATE.qIdx === n-1);
+  $('btn-entregar').style.display = (STATE.qIdx === n-1) ? 'block' : 'none';
+  const container = $('options'); container.innerHTML = '';
+  const savedKey = STATE.answers.hasOwnProperty(STATE.qIdx) ? STATE.answers[STATE.qIdx] : null;
+  r._opts.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'opt-btn'; btn.dataset.key = opt.l;
+    btn.innerHTML = `<span class="opt-letter">${opt.l.toUpperCase()}</span><span>${opt.t}</span>`;
+    if(opt.l === savedKey) btn.classList.add('selected');
+    btn.onclick = () => selectOption(opt.l, btn);
+    container.appendChild(btn);
+  });
+  const exp = $('explanation'); exp.className = 'explanation'; exp.innerHTML = '';
+  updateNavGrid();
+}
+function selectOption(key, clickedBtn){
+  STATE.answers[STATE.qIdx] = key;
+  document.querySelectorAll('.opt-btn').forEach(b => {
+    b.classList.remove('selected');
+    if(b.dataset.key === key) b.classList.add('selected');
+  });
+  updateNavGrid();
+}
+function pedirConfirmar(){
+  const p = BANCO.length - Object.keys(STATE.answers).length;
+  $('modal-msg').innerHTML = p > 0 ? `Tienes <strong>${p}</strong> pregunta(s) sin responder. ¿Continuar al siguiente módulo de todas formas?` : 'Has respondido todas las preguntas. ¿Ir al siguiente módulo?';
+  $('modal-bg').classList.add('open');
+}
+function cerrarModal(){ $('modal-bg').classList.remove('open'); }
+function confirmarEntrega(){ cerrarModal(); clearInterval(STATE.timerID); hide('screen-exam'); showResults(); }
+function calcCNE(c,t){
+  if(!t) return 1000;
+  const z = ((c/t)*100 - 50) / 16.67;
+  return Math.min(1300, Math.max(700, Math.round(1000 + 100*z)));
+}
+function showResults(){
+  let correct = 0, wrong = 0, skip = 0;
+  BANCO.forEach((r,i) => {
+    if(!STATE.answers.hasOwnProperty(i)) skip++;
+    else if(STATE.answers[i] === r._answerLetter) correct++;
+    else wrong++;
+  });
+  const total = BANCO.length;
+  const pct = total ? Math.round(correct/total*100) : 0;
+  const cne = calcCNE(correct, total);
+  const data = {modulo:NOMBRE, correctas:correct, total:total, pct:pct, cne:cne, fecha:new Date().toISOString(), correctos:correct};
+  try{
+    localStorage.setItem('exani_ri', JSON.stringify(data));
+    localStorage.setItem('simulacro_Redacción_Indirecta', JSON.stringify(data));
+  }catch(e){}
+  window.location.href = 'cl.html';
+}
+</script>
+</body>
+</html>
